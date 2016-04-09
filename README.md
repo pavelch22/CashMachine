@@ -2,7 +2,7 @@ This is the simple CashMachine emulator that supports:
 - deposit money;
 - withdraw money;
 - show balance;
-- multicurrency;
-- autorization;
+- multi-currency;
+- authorization;
 - internalization.
 Operates only with deposited denominations.
