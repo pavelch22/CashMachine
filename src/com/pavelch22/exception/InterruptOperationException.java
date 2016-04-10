@@ -1,4 +1,4 @@
-package exception;
+package com.pavelch22.exception;
 
 /**
  * Thrown to interrupt current operation.

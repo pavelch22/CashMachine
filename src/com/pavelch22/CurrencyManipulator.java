@@ -1,4 +1,6 @@
-import exception.NotEnoughMoneyException;
+package com.pavelch22;
+
+import com.pavelch22.exception.NotEnoughMoneyException;
 
 import java.util.Collections;
 import java.util.HashMap;

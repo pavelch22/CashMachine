@@ -1,3 +1,5 @@
+package com.pavelch22;
+
 /**
  * Main class
  */

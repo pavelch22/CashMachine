@@ -1,4 +1,4 @@
-package exception;
+package com.pavelch22.exception;
 
 /**
  * Thrown when there is not enough money to withdraw or no proper

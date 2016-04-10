@@ -1,4 +1,6 @@
-import exception.InterruptOperationException;
+package com.pavelch22;
+
+import com.pavelch22.exception.InterruptOperationException;
 
 import java.io.BufferedReader;
 import java.io.IOException;

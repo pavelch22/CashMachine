@@ -1,3 +1,5 @@
+package com.pavelch22;
+
 /**
  * Shows the list of all supported operations.
  */

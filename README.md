@@ -1,4 +1,4 @@
-This is the simple CashMachine emulator that supports:
+This is the simple com.pavelch22.CashMachine emulator that supports:
 - deposit money;
 - withdraw money;
 - show balance;

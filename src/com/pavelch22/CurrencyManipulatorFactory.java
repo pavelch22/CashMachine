@@ -1,3 +1,5 @@
+package com.pavelch22;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
