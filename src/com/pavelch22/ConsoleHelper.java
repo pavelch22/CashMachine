@@ -47,7 +47,7 @@ public class ConsoleHelper {
      * @throws InterruptOperationException
      */
     public static String askCurrencyCode() throws InterruptOperationException {
-        String currency = "";
+        String currency;
         while (true) {
             writeMessage("Please, enter currency code (3 letters)");
             currency = readString();
@@ -106,5 +106,9 @@ public class ConsoleHelper {
             }
         }
         return operation;
+    }
+
+    public static void printExitMessage() {
+        writeMessage("Good bye!");
     }
 }

@@ -8,6 +8,6 @@ class ExitCommand implements Command {
     @Override
     public void execute() throws InterruptOperationException {
         //Confirmation (y/n)
-        ConsoleHelper.writeMessage("Good bye.");
+        ConsoleHelper.printExitMessage();
     }
 }
