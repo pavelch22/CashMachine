@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
  * Class for work with console.
  */
 public class ConsoleHelper {
-    private static ResourceBundle resource = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "common" + CashMachine.LANGUAGE);
+    private static ResourceBundle resource = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "common", CashMachine.LOCALE);
     private static final BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
 
     /**
