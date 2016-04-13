@@ -1,11 +1,15 @@
 package com.pavelch22.command;
 
+import com.pavelch22.CashMachine;
 import com.pavelch22.ConsoleHelper;
 import com.pavelch22.CurrencyManipulator;
 import com.pavelch22.CurrencyManipulatorFactory;
 import com.pavelch22.exception.InterruptOperationException;
 
+import java.util.ResourceBundle;
+
 class DepositCommand implements Command {
+    private ResourceBundle resource = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "deposit" + CashMachine.LANGUAGE);
 
     @Override
     public void execute() throws InterruptOperationException {
@@ -15,6 +19,6 @@ class DepositCommand implements Command {
         int quantity = Integer.parseInt(digits[1]);
         CurrencyManipulator currencyManipulator = CurrencyManipulatorFactory.getManipulatorByCurrencyCode(currencyCode);
         currencyManipulator.addAmount(denomination, quantity);
-        ConsoleHelper.writeMessage("successfully added " + denomination + " " + quantity);
+        ConsoleHelper.writeMessage(String.format(resource.getString("success.format"), denomination, quantity));
     }
 }

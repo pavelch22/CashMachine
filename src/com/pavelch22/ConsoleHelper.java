@@ -5,11 +5,13 @@ import com.pavelch22.exception.InterruptOperationException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ResourceBundle;
 
 /**
  * Class for work with console.
  */
 public class ConsoleHelper {
+    private static ResourceBundle resource = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "common" + CashMachine.LANGUAGE);
     private static final BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
 
     /**
@@ -34,7 +36,7 @@ public class ConsoleHelper {
         } catch (IOException ignored) {
 
         }
-        if (s.equalsIgnoreCase("exit")) {
+        if (s.equalsIgnoreCase(resource.getString("operation.EXIT"))) {
             throw new InterruptOperationException();
         }
         return s;
@@ -49,12 +51,12 @@ public class ConsoleHelper {
     public static String askCurrencyCode() throws InterruptOperationException {
         String currency;
         while (true) {
-            writeMessage("Please, enter currency code (3 letters)");
+            writeMessage(resource.getString("choose.currency.code"));
             currency = readString();
             if (currency.length() == 3) {
                 break;
             } else {
-                writeMessage("You have entered incorrect data. Try again.");
+                writeMessage(resource.getString("invalid.data"));
             }
         }
         return currency.toUpperCase();
@@ -69,7 +71,7 @@ public class ConsoleHelper {
     public static String[] getValidTwoDigits() throws InterruptOperationException {
         String[] result = new String[2];
         while (true) {
-            writeMessage("Please, enter denomination and quantity (100 5, for example).");
+            writeMessage(resource.getString("choose.denomination.and.quantity"));
             String input = readString();
             String[] strings = input.split("\\s");
             String denomination = strings[0];
@@ -79,7 +81,7 @@ public class ConsoleHelper {
                 result[1] = quantity;
                 return result;
             } else {
-                writeMessage("You have entered incorrect data. Try again.");
+                writeMessage(resource.getString("invalid.data"));
             }
         }
     }
@@ -94,7 +96,7 @@ public class ConsoleHelper {
         Operation operation = null;
         while (operation == null) {
             try {
-                writeMessage("Choose operation.");
+                writeMessage(resource.getString("choose.operation"));
                 Operation[] operations = Operation.values();
                 for (int i = 1; i < operations.length; i++) {
                     writeMessage(i + " - " + operations[i]);
@@ -102,13 +104,13 @@ public class ConsoleHelper {
                 int code = Integer.parseInt(readString());
                 operation = Operation.getAllowableOperationByOrdinal(code);
             } catch (IllegalArgumentException e) {
-                writeMessage("You have entered invalid data. Try again.");
+                writeMessage(resource.getString("invalid.data"));
             }
         }
         return operation;
     }
 
     public static void printExitMessage() {
-        writeMessage("Good bye!");
+        writeMessage(resource.getString("exit.message"));
     }
 }

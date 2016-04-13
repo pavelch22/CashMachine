@@ -8,6 +8,7 @@ import com.pavelch22.exception.InterruptOperationException;
  */
 public class CashMachine {
     public static String RESOURCE_PATH = "com.pavelch22.resources.";
+    public static String LANGUAGE = "_en";
 
     public static void main(String[] args) {
         try {

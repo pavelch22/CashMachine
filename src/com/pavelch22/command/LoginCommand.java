@@ -6,24 +6,25 @@ import com.pavelch22.exception.InterruptOperationException;
 
 import java.util.ResourceBundle;
 
-public class LoginCommand implements Command {
-    private static ResourceBundle resource = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "verifiedCards");
+class LoginCommand implements Command {
+    private ResourceBundle validCreditCards = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "verifiedCards");
+    private ResourceBundle resource = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "login" + CashMachine.LANGUAGE);
 
     @Override
     public void execute() throws InterruptOperationException {
         boolean isLogged = false;
         while (!isLogged) {
-            ConsoleHelper.writeMessage("Enter card number (12 digits)");
-            String number = ConsoleHelper.readString();
-            ConsoleHelper.writeMessage("Enter card pin (4 digits)");
+            ConsoleHelper.writeMessage(resource.getString("enter.card.number"));
+            String cardNumber = ConsoleHelper.readString();
+            ConsoleHelper.writeMessage(resource.getString("enter.pin"));
             String pin = ConsoleHelper.readString();
-            boolean isCorrectData = number.matches("\\d{12}") && pin.matches("\\d{4}");
-            boolean isValidVerification = resource.containsKey(number) && resource.getObject(number).equals(pin);
+            boolean isCorrectData = cardNumber.matches("\\d{12}") && pin.matches("\\d{4}");
+            boolean isValidVerification = validCreditCards.containsKey(cardNumber) && validCreditCards.getObject(cardNumber).equals(pin);
             if (isCorrectData && isValidVerification) {
-                ConsoleHelper.writeMessage("Successful verification.");
+                ConsoleHelper.writeMessage(String.format(resource.getString("success.format"), cardNumber));
                 isLogged = true;
             } else {
-                ConsoleHelper.writeMessage("Login failed. Try again.");
+                ConsoleHelper.writeMessage(resource.getString("login.failed"));
             }
         }
     }
