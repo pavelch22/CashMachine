@@ -9,8 +9,8 @@ import java.util.Locale;
  * Main class
  */
 public class CashMachine {
-    public static String RESOURCE_PATH = "com.pavelch22.resources.";
-    public static Locale LOCALE = new Locale("en");
+    public final static String RESOURCE_PATH = "com.pavelch22.resources.";
+    public static Locale locale = new Locale("en");
 
     public static void main(String[] args) {
         try {

@@ -9,7 +9,7 @@ import com.pavelch22.exception.InterruptOperationException;
 import java.util.ResourceBundle;
 
 class InfoCommand implements Command {
-    private ResourceBundle resource = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "info", CashMachine.LOCALE);
+    private ResourceBundle resource = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "info", CashMachine.locale);
 
     @Override
     public void execute() throws InterruptOperationException {

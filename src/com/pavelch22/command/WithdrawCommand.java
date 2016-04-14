@@ -10,7 +10,7 @@ import com.pavelch22.exception.NotEnoughMoneyException;
 import java.util.*;
 
 class WithdrawCommand implements Command {
-    private ResourceBundle resource = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "withdraw", CashMachine.LOCALE);
+    private ResourceBundle resource = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "withdraw", CashMachine.locale);
 
     @Override
     public void execute() throws InterruptOperationException {

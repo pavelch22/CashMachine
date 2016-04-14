@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
  * Class for work with console.
  */
 public class ConsoleHelper {
-    private static ResourceBundle resource = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "common", CashMachine.LOCALE);
+    private static ResourceBundle resource = ResourceBundle.getBundle(CashMachine.RESOURCE_PATH + "common", CashMachine.locale);
     private static final BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
 
     /**
@@ -64,6 +64,7 @@ public class ConsoleHelper {
 
     /**
      * Reads and returns two valid digits from console.
+     * For string "100 5" returns ["100", "5"].
      *
      * @return array of digits
      * @throws InterruptOperationException
@@ -74,14 +75,15 @@ public class ConsoleHelper {
             writeMessage(resource.getString("choose.denomination.and.quantity"));
             String input = readString();
             String[] strings = input.split("\\s");
-            String denomination = strings[0];
-            String quantity = strings[1];
-            if (denomination.matches("\\d+") && (Integer.parseInt(denomination) > 0) && quantity.matches("\\d") && (Integer.parseInt(quantity) > 0)) {
-                result[0] = denomination;
-                result[1] = quantity;
+            //check that there are two arguments and they are positive integers
+            if (strings.length == 2 &&
+                    strings[0].matches("\\d+") && (Integer.parseInt(strings[0]) > 0) &&
+                        strings[1].matches("\\d") && (Integer.parseInt(strings[1]) > 0)) {
+                result[0] = strings[0];
+                result[1] = strings[1];
                 return result;
             } else {
-                writeMessage(resource.getString("invalid.data"));
+                ConsoleHelper.writeMessage(resource.getString("invalid.data"));
             }
         }
     }
